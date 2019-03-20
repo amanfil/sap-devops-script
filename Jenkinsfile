@@ -18,7 +18,7 @@ node(label: 'master') {
 			checkout([$class: 'GitSCM', branches: [[name: "${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a6e6d971-7ca6-4e96-8c2e-f173c57c5a0c', url: 'https://github.com/amanfil/sap-devops-script.git']]])
 		}
 		
-	stage('Build Docker Image'){
+/*	stage('Build Docker Image'){
       sh "logoutdocker"
       sh "logindocker"
       sh "cd ${workspace}"
@@ -37,7 +37,7 @@ node(label: 'master') {
         }
       sh "logoutdocker"
       sh "docker rmi -f ${DOCKER_REPO}/${IMAGE_NAME}:latest"
-	}
+	}*/
 }
     catch (err) {
         currentBuild.result = "FAILURE"
