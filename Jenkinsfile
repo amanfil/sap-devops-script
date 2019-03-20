@@ -18,14 +18,15 @@ node(label: 'master') {
 			checkout([$class: 'GitSCM', branches: [[name: "${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a6e6d971-7ca6-4e96-8c2e-f173c57c5a0c', url: 'https://github.com/amanfil/sap-devops-script.git']]])
 		}
 		
-/*	stage('Build Docker Image'){
-      sh "logoutdocker"
-      sh "logindocker"
-      sh "cd ${workspace}"
+	stage('Build Docker Image'){
+     	 sh "logoutdocker"
+      	 sh "logindocker"
+      	 sh "cd ${workspace}"
 	    
-        sh "docker build -t ${DOCKER_REPO}/${IMAGE_NAME}:latest -f sonar-scanner/Dockerfile ."
+         sh "docker build -t ${DOCKER_REPO}/${IMAGE_NAME}:latest -f sonar-scanner/Dockerfile ."
       }
-      stage ('Tag Docker Image') {
+	    
+      /*stage ('Tag Docker Image') {
       	    sh "docker tag ${DOCKER_REPO}/${IMAGE_NAME}:latest ${DOCKER_REPO}/${IMAGE_NAME}:latest"
 	  }
    stage('Docker Image Upload to Artifactory'){
